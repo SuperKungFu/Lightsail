@@ -1,0 +1,28 @@
+<header>
+<div class="header">
+
+{% if 'email' not in session: %}
+	<a href="{{url_for('showLogin')}}">
+	<button type="button" class="btn btn-info pull-right">Login</button>
+	</a>
+{% else %}
+	<a href="{{url_for('gdisconnect')}}">
+	<button type="button" class="btn btn-danger pull-right">Logout</button>
+	</a>
+	<div class="pull-right logintext">Welcome {{session['name']}}</div>
+{% endif %}
+
+Bret's Catalog
+
+</div>
+</header>
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class = 'flash'>
+			{% for message in messages %}
+				<strong> {{ message }} </strong><br>
+			{% endfor %}
+			</div>
+		{% endif %}
+	{% endwith %}
